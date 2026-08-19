@@ -1,0 +1,138 @@
+{
+  "hotels": [
+    {
+      "name": "Hôtel Plaza Athénée",
+      "pricePerNight": 1200,
+      "currency": "USD",
+      "rating": 4.9,
+      "address": "25 Av. Montaigne, 75008 Paris, France",
+      "url": "https://www.booking.com/hotel/fr/plaza-athenee-paris.html",
+      "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600",
+      "reviewCount": 4521
+    },
+    {
+      "name": "Le Meurice",
+      "pricePerNight": 950,
+      "currency": "USD",
+      "rating": 4.8,
+      "address": "228 Rue de Rivoli, 75001 Paris, France",
+      "url": "https://www.booking.com/hotel/fr/le-meurice.html",
+      "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600",
+      "reviewCount": 3892
+    },
+    {
+      "name": "Hôtel Lutetia",
+      "pricePerNight": 620,
+      "currency": "USD",
+      "rating": 4.7,
+      "address": "45 Bd Raspail, 75006 Paris, France",
+      "url": "https://www.booking.com/hotel/fr/lutetia-paris.html",
+      "imageUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600",
+      "reviewCount": 2714
+    },
+    {
+      "name": "Hôtel du Louvre",
+      "pricePerNight": 340,
+      "currency": "USD",
+      "rating": 4.5,
+      "address": "Place André Malraux, 75001 Paris, France",
+      "url": "https://www.booking.com/hotel/fr/du-louvre-paris.html",
+      "imageUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600",
+      "reviewCount": 5611
+    },
+    {
+      "name": "Hotel Fabric",
+      "pricePerNight": 185,
+      "currency": "USD",
+      "rating": 4.4,
+      "address": "31 Rue de la Folie Méricourt, 75011 Paris, France",
+      "url": "https://www.booking.com/hotel/fr/fabric-paris.html",
+      "imageUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600",
+      "reviewCount": 1823
+    },
+    {
+      "name": "Generator Paris",
+      "pricePerNight": 75,
+      "currency": "USD",
+      "rating": 4.1,
+      "address": "9-11 Place du Colonel Fabien, 75010 Paris, France",
+      "url": "https://www.booking.com/hotel/fr/generator-paris.html",
+      "imageUrl": "https://images.unsplash.com/photo-1582610116397-edb72f96f8ab?w=600",
+      "reviewCount": 6234
+    }
+  ],
+  "attractions": [
+    {
+      "name": "Eiffel Tower",
+      "category": "Landmark",
+      "rating": 4.8,
+      "description": "The iconic iron lattice tower on the Champ de Mars. Visit at sunset for the most magical views or after dark for the glittering light show every hour.",
+      "address": "Champ de Mars, 5 Av. Anatole France, 75007 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1543349689-9a4d426bee8e?w=600",
+      "reviewCount": 198432
+    },
+    {
+      "name": "The Louvre Museum",
+      "category": "Museum",
+      "rating": 4.7,
+      "description": "The world's largest art museum and historic monument. Home to over 35,000 works including the Mona Lisa and Venus de Milo. Book tickets in advance.",
+      "address": "Rue de Rivoli, 75001 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1566127992631-137a642a90f4?w=600",
+      "reviewCount": 152341
+    },
+    {
+      "name": "Musée d'Orsay",
+      "category": "Museum",
+      "rating": 4.8,
+      "description": "Housed in a stunning Beaux-Arts railway station, this museum holds the world's largest collection of Impressionist masterpieces by Monet, Renoir, and Van Gogh.",
+      "address": "1 Rue de la Légion d'Honneur, 75007 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1499856871958-5b9357976b82?w=600",
+      "reviewCount": 87654
+    },
+    {
+      "name": "Notre-Dame Cathedral",
+      "category": "Historical & Religious Site",
+      "rating": 4.7,
+      "description": "The masterpiece of Gothic architecture on the Île de la Cité. Partially restored after the 2019 fire, the exterior and surroundings remain breathtaking.",
+      "address": "6 Parvis Notre-Dame, Pl. Jean-Paul II, 75004 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1478391679764-b2d8b3cd1e94?w=600",
+      "reviewCount": 143210
+    },
+    {
+      "name": "Sacré-Cœur Basilica & Montmartre",
+      "category": "Neighbourhood & Landmark",
+      "rating": 4.6,
+      "description": "Perched atop the highest point in Paris, this stunning white basilica offers panoramic city views. The surrounding Montmartre district is full of artists, cafés, and cabarets.",
+      "address": "35 Rue du Chevalier de la Barre, 75018 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1499856871958-5b9357976b82?w=600",
+      "reviewCount": 98712
+    },
+    {
+      "name": "Palace of Versailles",
+      "category": "Historical Site & Gardens",
+      "rating": 4.8,
+      "description": "The former royal residence of French kings — an opulent baroque palace with the Hall of Mirrors, stunning royal apartments, and 800 hectares of formal gardens.",
+      "address": "Place d'Armes, 78000 Versailles, France",
+      "imageUrl": "https://images.unsplash.com/photo-1525240968839-e4c8bc26f3ab?w=600",
+      "reviewCount": 76543
+    },
+    {
+      "name": "Le Marais District",
+      "category": "Neighbourhood & Culture",
+      "rating": 4.6,
+      "description": "Paris's trendiest neighbourhood, blending medieval history with contemporary art galleries, designer boutiques, Jewish heritage, and some of the city's best falafel.",
+      "address": "Le Marais, 75004 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600",
+      "reviewCount": 54321
+    },
+    {
+      "name": "Seine River Cruise (Bateaux Mouches)",
+      "category": "Experience & Sightseeing",
+      "rating": 4.5,
+      "description": "A 1-hour boat cruise along the Seine offering iconic views of Paris's most famous monuments — the Eiffel Tower, Notre-Dame, and the Louvre from the water.",
+      "address": "Port de la Conférence, Pont de l'Alma, 75008 Paris, France",
+      "imageUrl": "https://images.unsplash.com/photo-1541905337561-f4b5ad08c8d8?w=600",
+      "reviewCount": 45678
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "hotels": [
+    {
+      "name": "The Leela Goa",
+      "pricePerNight": 280,
+      "currency": "USD",
+      "rating": 4.8,
+      "address": "Mobor, Cavelossim, South Goa, Goa 403731",
+      "url": "https://www.booking.com/hotel/in/the-leela-goa.html",
+      "imageUrl": "https://images.unsplash.com/photo-1582610116397-edb72f96f8ab?w=600",
+      "reviewCount": 3421
+    },
+    {
+      "name": "W Goa",
+      "pricePerNight": 220,
+      "currency": "USD",
+      "rating": 4.7,
+      "address": "Vagator Beach Rd, Anjuna, North Goa, Goa 403509",
+      "url": "https://www.booking.com/hotel/in/w-goa.html",
+      "imageUrl": "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=600",
+      "reviewCount": 2198
+    },
+    {
+      "name": "Taj Fort Aguada Resort & Spa",
+      "pricePerNight": 195,
+      "currency": "USD",
+      "rating": 4.6,
+      "address": "Fort Aguada Rd, Sinquerim, Goa 403519",
+      "url": "https://www.booking.com/hotel/in/taj-fort-aguada-resort-and-spa-goa.html",
+      "imageUrl": "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=600",
+      "reviewCount": 4102
+    },
+    {
+      "name": "Alila Diwa Goa",
+      "pricePerNight": 165,
+      "currency": "USD",
+      "rating": 4.5,
+      "address": "Adao Waddo, Majorda, South Goa, Goa 403713",
+      "url": "https://www.booking.com/hotel/in/alila-diwa-goa.html",
+      "imageUrl": "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600",
+      "reviewCount": 1876
+    },
+    {
+      "name": "The Zuri White Sands Resort & Casino",
+      "pricePerNight": 120,
+      "currency": "USD",
+      "rating": 4.3,
+      "address": "Varca Beach, South Goa, Goa 403721",
+      "url": "https://www.booking.com/hotel/in/zuri-white-sands-goa-resort-casino.html",
+      "imageUrl": "https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=600",
+      "reviewCount": 2654
+    },
+    {
+      "name": "Novotel Goa Candolim",
+      "pricePerNight": 95,
+      "currency": "USD",
+      "rating": 4.2,
+      "address": "Candolim, North Goa, Goa 403515",
+      "url": "https://www.booking.com/hotel/in/novotel-goa-candolim.html",
+      "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600",
+      "reviewCount": 3201
+    }
+  ],
+  "attractions": [
+    {
+      "name": "Baga Beach",
+      "category": "Beach",
+      "rating": 4.5,
+      "description": "One of Goa's most famous and vibrant beaches, known for its water sports, shacks, and lively nightlife. A must-visit for first-timers.",
+      "address": "Baga, North Goa, Goa",
+      "imageUrl": "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600",
+      "reviewCount": 18924
+    },
+    {
+      "name": "Basilica of Bom Jesus",
+      "category": "Historical & Religious Site",
+      "rating": 4.7,
+      "description": "A UNESCO World Heritage Site housing the mortal remains of St. Francis Xavier. One of the finest examples of baroque architecture in India.",
+      "address": "Old Goa Rd, Bainguinim, Goa 403402",
+      "imageUrl": "https://images.unsplash.com/photo-1583430823222-65a87c99ef39?w=600",
+      "reviewCount": 12456
+    },
+    {
+      "name": "Dudhsagar Waterfalls",
+      "category": "Nature & Scenic",
+      "rating": 4.8,
+      "description": "One of India's tallest waterfalls at 310 meters. Located on the Mandovi River at the Goa–Karnataka border. Best visited post-monsoon.",
+      "address": "Bhagwan Mahavir Wildlife Sanctuary, Mollem, Goa 403410",
+      "imageUrl": "https://images.unsplash.com/photo-1606298855672-3efb63017be8?w=600",
+      "reviewCount": 9832
+    },
+    {
+      "name": "Anjuna Flea Market",
+      "category": "Shopping & Market",
+      "rating": 4.2,
+      "description": "The iconic Wednesday flea market in Anjuna beach. A kaleidoscope of local crafts, clothing, spices, and Goan trinkets.",
+      "address": "Anjuna Beach, North Goa, Goa 403509",
+      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600",
+      "reviewCount": 7621
+    },
+    {
+      "name": "Fort Aguada",
+      "category": "Historical Site",
+      "rating": 4.4,
+      "description": "A 17th-century Portuguese fort overlooking the Arabian Sea. Features a four-storey lighthouse and offers spectacular sunset views.",
+      "address": "Fort Aguada Rd, Sinquerim, North Goa, Goa 403519",
+      "imageUrl": "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600",
+      "reviewCount": 11203
+    },
+    {
+      "name": "Calangute Beach",
+      "category": "Beach",
+      "rating": 4.3,
+      "description": "Known as the 'Queen of Beaches', Calangute is the largest beach in North Goa, offering parasailing, jet skiing, and banana boat rides.",
+      "address": "Calangute, North Goa, Goa 403516",
+      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600",
+      "reviewCount": 22100
+    },
+    {
+      "name": "Palolem Beach",
+      "category": "Beach",
+      "rating": 4.6,
+      "description": "A crescent-shaped beach in South Goa, considered one of India's most beautiful. Perfect for swimming, kayaking, and silent disco nights.",
+      "address": "Palolem, Canacona, South Goa, Goa 403702",
+      "imageUrl": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600",
+      "reviewCount": 14567
+    },
+    {
+      "name": "Chapora Fort",
+      "category": "Historical Site",
+      "rating": 4.3,
+      "description": "Famous for its panoramic views of Vagator Beach and the Arabian Sea. Immortalized by the Bollywood film Dil Chahta Hai.",
+      "address": "Chapora, North Goa, Goa 403509",
+      "imageUrl": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600",
+      "reviewCount": 8934
+    }
+  ]
+}
