@@ -1,11 +1,15 @@
-export default function SkeletonCard({ className = '' }) {
+export default function SkeletonCard() {
   return (
-    <div className={`card p-4 space-y-3 ${className}`}>
-      <div className="skeleton h-40 w-full rounded-xl" />
-      <div className="skeleton h-4 w-3/4 rounded-full" />
-      <div className="skeleton h-3 w-1/2 rounded-full" />
-      <div className="skeleton h-3 w-5/6 rounded-full" />
-      <div className="skeleton h-3 w-2/3 rounded-full" />
+    <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-lg animate-pulse">
+      <div className="w-full h-48 bg-slate-800" />
+      <div className="p-5 space-y-3">
+        <div className="h-5 bg-slate-800 rounded w-3/4" />
+        <div className="h-4 bg-slate-800 rounded w-1/2" />
+        <div className="pt-2 flex justify-between items-center">
+          <div className="h-6 bg-slate-800 rounded w-20" />
+          <div className="h-8 bg-slate-800 rounded-lg w-24" />
+        </div>
+      </div>
     </div>
   );
 }

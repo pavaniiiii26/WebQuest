@@ -2,39 +2,60 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
-import guideRouter from './routes/guide.js';
+
+import { config } from './config/env.js';
+import destinationsRouter from './routes/destinations.js';
+import searchRouter from './routes/search.js';
+import healthRouter from './routes/health.js';
+import { readCache } from './services/cacheService.js';
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = config.port;
+
+// Initialize cache seed on startup
+readCache();
 
 // ── CORS ─────────────────────────────────────────────────────────────────────
-app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'],
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: ['http://localhost:5173', 'http://localhost:3000', 'http://127.0.0.1:5173'],
+    credentials: true,
+  })
+);
 
 // ── Body parsing ──────────────────────────────────────────────────────────────
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // ── Rate limiting ─────────────────────────────────────────────────────────────
 const limiter = rateLimit({
-  windowMs: 60 * 1000,     // 1 minute
-  max: 10,                  // 10 guide requests per minute
+  windowMs: 60 * 1000,
+  max: 120,
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: 'Too many requests — please wait a moment before trying again.' },
-  skip: (req) => req.path.includes('/guide-stream'), // don't rate-limit SSE polling
 });
 
-// ── Routes ────────────────────────────────────────────────────────────────────
-app.use('/api', limiter, guideRouter);
+app.use(limiter);
 
-// ── Health check ──────────────────────────────────────────────────────────────
-app.get('/health', (_req, res) => res.json({ ok: true, mode: process.env.DEMO_MODE === 'true' ? 'demo' : 'live' }));
+// ── API Routes ────────────────────────────────────────────────────────────────
+app.use('/api/destinations', destinationsRouter);
+app.use('/api/search', searchRouter);
+app.use('/api/scraper-health', healthRouter);
 
-// ── Start ─────────────────────────────────────────────────────────────────────
+// ── System Health Check ───────────────────────────────────────────────────────
+app.get('/health', (_req, res) =>
+  res.json({
+    ok: true,
+    app: 'TravelGenie Discovery Platform',
+    engine: 'Bright Data Self-Healing Engine (Zero-LLM)',
+    cacheStorage: 'Local Seed JSON Cache',
+  })
+);
+
+// ── Start Server ──────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  const mode = process.env.DEMO_MODE === 'true' ? '🎭 DEMO MODE' : '🌐 LIVE MODE';
-  console.log(`\n✈️  TravelGenie backend running on http://localhost:${PORT}`);
-  console.log(`   ${mode}\n`);
+  console.log(`\n✈️  TravelGenie Backend running on http://localhost:${PORT}`);
+  console.log(`   🌐 Bright Data Token: ${config.brightDataApiToken ? 'Configured ✅' : 'Missing ⚠️'}`);
+  console.log(`   🛡️  Self-Healing Engine: Active (Zero-LLM)\n`);
 });

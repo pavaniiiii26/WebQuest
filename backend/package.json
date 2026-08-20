@@ -1,7 +1,7 @@
 {
-  "name": "travelgenie-backend",
+  "name": "autoheal-scraper-backend",
   "version": "1.0.0",
-  "description": "TravelGenie backend — Bright Data + Claude AI travel guide generator",
+  "description": "AutoHeal Scraper — Self-Healing Web Scraper Backend with Deterministic Failure Detection & Recovery",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -9,12 +9,14 @@
     "dev": "node --watch server.js"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.30.0",
+    "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.3.1",
+    "mongoose": "^8.9.5",
     "node-fetch": "^3.3.2",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "zod": "^4.4.3"
   }
 }
