@@ -1,7 +1,7 @@
 {
-  "name": "autoheal-scraper-backend",
+  "name": "voyalette-backend",
   "version": "1.0.0",
-  "description": "AutoHeal Scraper — Self-Healing Web Scraper Backend with Deterministic Failure Detection & Recovery",
+  "description": "Voyalette — Self-Healing Bright Data travel discovery backend",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -14,7 +14,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.3.1",
-    "mongoose": "^8.9.5",
     "node-fetch": "^3.3.2",
     "uuid": "^10.0.0",
     "zod": "^4.4.3"

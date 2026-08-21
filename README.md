@@ -1,6 +1,6 @@
-# ✈️ TravelGenie — Self-Healing Bright Data Travel Discovery Platform
+# ✈️ Voyalette — Self-Healing Bright Data Travel Discovery Platform
 
-**TravelGenie** is a high-performance travel discovery web application powered by a **Self-Healing Bright Data Scraper Engine (Zero-LLM)**. It features real-time hotel & attraction extraction, multi-level field fallbacks, Zod schema validation, exponential retry backoff, graceful cache degradation, structured audit logs, and a premium travel UI.
+**Voyalette** is a high-performance travel discovery web application powered by a **Self-Healing Bright Data Scraper Engine (Zero-LLM)**. It features real-time hotel & attraction extraction, multi-level field fallbacks, Zod schema validation, exponential retry backoff, graceful cache degradation, structured audit logs, and a premium travel UI.
 
 ---
 
@@ -26,7 +26,7 @@
 ## 🚀 Quick Start
 
 ### 1. Environment Setup
-Create `backend/.env`:
+Copy `backend/.env.example` to `backend/.env` and fill in your values:
 ```env
 BRIGHTDATA_API_TOKEN=your_brightdata_api_token_here
 BRIGHTDATA_HOTELS_DATASET_ID=gd_l1v83015112o9h5h77
@@ -43,7 +43,7 @@ npm run dev
 ```
 > Running on `http://localhost:3001`
 
-### 2. Start Frontend UI
+### 3. Start Frontend UI
 ```bash
 cd frontend
 npm install

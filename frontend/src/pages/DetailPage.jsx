@@ -301,11 +301,11 @@ export default function DetailPage() {
       <footer className="py-8 text-center text-xs text-ink-700/40">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-ink-700/60 font-medium">
-            <span>GoExplore TravelGenie</span>
+            <span>Voyalette</span>
             <span>•</span>
             <span className="text-olive-700">Destination</span>
           </div>
-          <p>© 2026 GoExplore. Zero-LLM Architecture.</p>
+          <p>© 2026 Voyalette. Zero-LLM Architecture.</p>
         </div>
       </footer>
     </div>

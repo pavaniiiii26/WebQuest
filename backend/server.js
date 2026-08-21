@@ -47,7 +47,7 @@ app.use('/api/scraper-health', healthRouter);
 app.get('/health', (_req, res) =>
   res.json({
     ok: true,
-    app: 'TravelGenie Discovery Platform',
+    app: 'Voyalette Discovery Platform',
     engine: 'Bright Data Self-Healing Engine (Zero-LLM)',
     cacheStorage: 'Local Seed JSON Cache',
   })
@@ -55,7 +55,7 @@ app.get('/health', (_req, res) =>
 
 // ── Start Server ──────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
-  console.log(`\n✈️  TravelGenie Backend running on http://localhost:${PORT}`);
+  console.log(`\n✈️  Voyalette Backend running on http://localhost:${PORT}`);
   console.log(`   🌐 Bright Data Token: ${config.brightDataApiToken ? 'Configured ✅' : 'Missing ⚠️'}`);
   console.log(`   🛡️  Self-Healing Engine: Active (Zero-LLM)\n`);
 });

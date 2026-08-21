@@ -128,7 +128,7 @@ export default function LandingPage() {
         </h1>
 
         <p className="mt-5 max-w-2xl text-center text-lg text-slate-400 animate-fade-up" style={{ animationDelay: '0.2s', opacity: 0 }}>
-          Enter your destinations. TravelGenie scrapes real hotel prices and attraction ratings,
+          Enter your destinations. Voyalette scrapes real hotel prices and attraction ratings,
           then uses Claude AI to build a personalised day-by-day itinerary — with zero guesswork.
         </p>
 

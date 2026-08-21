@@ -423,7 +423,7 @@ export default function HomePage() {
               <div className="w-8 h-8 rounded-lg bg-olive-600 flex items-center justify-center">
                 <Compass className="w-4 h-4 text-white" />
               </div>
-              <span className="text-lg font-serif text-ink-900">GoExplore</span>
+              <span className="text-lg font-serif text-ink-900">Voyalette</span>
             </div>
             <p className="text-xs text-ink-700/50 max-w-[180px] text-center md:text-left leading-relaxed">
               Self-healing Bright Data travel engine. Real data, zero hallucinations.
@@ -450,7 +450,7 @@ export default function HomePage() {
         </div>
 
         <div className="max-w-6xl mx-auto mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-ink-700/40">
-          <span>© 2026 GoExplore. Zero-LLM Architecture.</span>
+          <span>© 2026 Voyalette. Zero-LLM Architecture.</span>
           <span className="text-olive-600/70">Self-Healing Bright Data Engine</span>
         </div>
       </footer>

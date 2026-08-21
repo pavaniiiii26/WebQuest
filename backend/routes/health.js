@@ -18,7 +18,7 @@ router.get('/', (_req, res) => {
     res.json({
       success: true,
       status: 'healthy',
-      engine: 'TravelGenie Self-Healing Bright Data Scraper (Zero-LLM)',
+      engine: 'Voyalette Self-Healing Bright Data Scraper (Zero-LLM)',
       brightDataConnected: Boolean(config.brightDataApiToken),
       stats: {
         totalScrapes,
