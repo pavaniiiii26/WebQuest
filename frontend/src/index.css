@@ -19,6 +19,34 @@
   }
 }
 
+/* A restrained glass-like response for interactive controls. */
+@media (hover: hover) {
+  button:not(:disabled),
+  a[class*="rounded"],
+  [role="button"],
+  .cursor-pointer {
+    transition-property: transform, box-shadow, filter, background-color, border-color, opacity;
+    transition-duration: 240ms;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  button:not(:disabled):hover,
+  a[class*="rounded"]:hover,
+  [role="button"]:hover,
+  .cursor-pointer:hover {
+    position: relative;
+    z-index: 20;
+    transform: translateY(-4px);
+    box-shadow:
+      0 24px 46px -10px rgba(30, 35, 26, 0.58),
+      0 10px 20px -8px rgba(57, 70, 43, 0.52),
+      0 5px 16px -7px rgba(255, 255, 255, 0.3) inset,
+      0 0 0 1px rgba(74, 92, 58, 0.26),
+      0 0 28px rgba(186, 205, 161, 0.28);
+    filter: saturate(1.1) brightness(1.05);
+  }
+}
+
 /* ── Hero Progress Bar Animation ───────────────────────────────────────────── */
 @keyframes heroProgressFill {
   from { transform: scaleX(0); }
