@@ -26,7 +26,7 @@
 ## 🚀 Quick Start
 
 ### 1. Environment Setup
-Copy `.env.example` to `backend/.env`:
+Create `backend/.env`:
 ```env
 BRIGHTDATA_API_TOKEN=your_brightdata_api_token_here
 BRIGHTDATA_HOTELS_DATASET_ID=gd_l1v83015112o9h5h77
@@ -43,7 +43,7 @@ npm run dev
 ```
 > Running on `http://localhost:3001`
 
-### 3. Start Frontend UI
+### 2. Start Frontend UI
 ```bash
 cd frontend
 npm install
