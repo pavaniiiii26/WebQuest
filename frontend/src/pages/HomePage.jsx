@@ -304,7 +304,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section id="about" className="py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14 space-y-3">
               <h2 className="font-serif text-3xl sm:text-[2.2rem] font-medium text-ink-900">Travel with confidence</h2>

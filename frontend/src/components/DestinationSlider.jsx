@@ -185,6 +185,12 @@ export default function DestinationSlider({ destinations, onSelectDestination })
 
           <button
             type="button"
+            onClick={() => {
+              document.getElementById('destinations')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }}
             className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/15 backdrop-blur-md transition-all duration-300"
             aria-label="Search"
           >

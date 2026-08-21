@@ -56,6 +56,13 @@ export default function Header({ isTransparent = false }) {
           </a>
 
           <button
+            type="button"
+            onClick={() => {
+              document.getElementById('destinations')?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               isTransparent
                 ? 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
