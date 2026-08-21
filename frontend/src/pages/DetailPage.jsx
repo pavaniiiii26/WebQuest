@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   Calendar,
   Users,
@@ -16,8 +16,11 @@ import { fetchDestinationDetail, searchDestinations } from '../services/api.js';
 import { DESTINATIONS_DATA } from '../data/destinationsData.js';
 
 export default function DetailPage() {
-  const { name } = useParams();
+  const { name, hotelIndex } = useParams();
+  const navigate = useNavigate();
   const destinationName = name || 'Singapore';
+  const selectedHotelIndex = Number(hotelIndex);
+  const isHotelPage = Number.isInteger(selectedHotelIndex) && selectedHotelIndex >= 0;
 
   const [detailData, setDetailData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -36,23 +39,28 @@ export default function DetailPage() {
 
   useEffect(() => {
     setLoading(true);
+    setSelectedHotel(null);
     fetchDestinationDetail(destinationName)
       .then((data) => {
         setDetailData(data);
         if (data.hotels?.length > 0) {
-          setSelectedHotel(data.hotels[0]);
+          setSelectedHotel(data.hotels[isHotelPage] || data.hotels[0]);
+          if (isHotelPage) {
+            setTimeout(() => document.getElementById('selected-hotel')?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+          }
         }
       })
       .catch((err) => console.error('Error fetching detail:', err))
       .finally(() => setLoading(false));
-  }, [destinationName]);
+  }, [destinationName, hotelIndex, isHotelPage]);
 
   const curated = DESTINATIONS_DATA.find(
     (d) => d.country.toLowerCase() === destinationName.toLowerCase()
       || d.id.toLowerCase() === destinationName.toLowerCase(),
   );
 
-  const activeHotel = selectedHotel || detailData?.hotels?.[0] || {
+  const routeHotel = isHotelPage ? detailData?.hotels?.[selectedHotelIndex] : null;
+  const activeHotel = routeHotel || selectedHotel || detailData?.hotels?.[0] || {
     name: `${destinationName} Grand Resort & Spa`,
     pricePerNight: 380,
     currency: 'USD',
@@ -151,7 +159,11 @@ export default function DetailPage() {
           <p className="text-[15px] text-white/80 max-w-xl font-light leading-relaxed">
             {heroDescription}
           </p>
-          <button className="inline-flex items-center px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-white text-sm font-medium backdrop-blur-md transition-all duration-300">
+          <button
+            type="button"
+            onClick={() => document.getElementById('itinerary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            className="inline-flex items-center px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-white text-sm font-medium backdrop-blur-md transition-all duration-300"
+          >
             View the itinerary
           </button>
         </div>
@@ -180,7 +192,12 @@ export default function DetailPage() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
               {mosaicPlaces.map((place, idx) => (
                 <div key={`${place.name}-${idx}`} className={idx === 0 || idx === 5 ? 'sm:row-span-2' : ''}>
-                  <PlaceCard place={place} index={idx} isDesktop={idx === 0 || idx === 5} />
+                  <PlaceCard
+                    place={place}
+                    index={idx}
+                    isDesktop={idx === 0 || idx === 5}
+                    onOpen={detailData?.hotels?.[idx] ? () => navigate(`/hotel/${encodeURIComponent(destinationName)}/${idx}`) : undefined}
+                  />
                 </div>
               ))}
             </div>
@@ -188,12 +205,12 @@ export default function DetailPage() {
         )}
 
         {routeStops.length > 0 && (
-          <section className="space-y-6">
+          <section id="itinerary" className="space-y-6 scroll-mt-8">
             <ItineraryMap stops={routeStops} />
           </section>
         )}
 
-        <section className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section id="selected-hotel" className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center scroll-mt-8">
           <div className="relative h-[420px] rounded-[28px] overflow-hidden group">
             <img
               src={activeHotel.imageUrl}
@@ -297,7 +314,7 @@ export default function DetailPage() {
               {detailData?.hotels?.slice(0, 4).map((hotel, idx) => (
                 <div
                   key={idx}
-                  onClick={() => setSelectedHotel(hotel)}
+                  onClick={() => navigate(`/hotel/${encodeURIComponent(destinationName)}/${idx}`)}
                   className={`rounded-[20px] overflow-hidden cursor-pointer transition-all duration-500 ${
                     selectedHotel?.name === hotel.name
                       ? 'ring-2 ring-olive-500/40'

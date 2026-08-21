@@ -16,6 +16,7 @@ export default function App() {
         <Route path="/specials/:season" element={<SeasonalSpecialsPage />} />
         <Route path="/experience/:destination/:experienceIndex" element={<ExperiencePage />} />
         <Route path="/destination/:name" element={<DetailPage />} />
+        <Route path="/hotel/:name/:hotelIndex" element={<DetailPage />} />
       </Routes>
     </Router>
   );
