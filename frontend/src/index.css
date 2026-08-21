@@ -1,18 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Sora:wght@400;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Playfair Display', Georgia, Cambria, 'Times New Roman', Times, serif;
+  }
+
+  /* Hide scrollbar cross-browser */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ── Hero Progress Bar Animation ───────────────────────────────────────────── */
+@keyframes heroProgressFill {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+.hero-progress-bar {
+  transform-origin: left center;
+  animation-name: heroProgressFill;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+
 /* ── Design System Tokens ──────────────────────────────────────────────────── */
 :root {
-  --accent: 13 144 235;         /* brand-500 */
-  --accent-glow: 55 170 248;    /* brand-400 */
-  --surface: 15 23 42;          /* surface-900 */
-  --surface-card: 30 41 59;     /* surface-800 */
-  --text-primary: 248 250 252;
-  --text-muted: 148 163 184;
-  --radius: 16px;
+  --accent: 95 115 73;          /* olive-500 */
+  --accent-glow: 163 179 140;   /* olive-300 */
+  --surface: 245 242 236;       /* cream-100 */
+  --surface-card: 251 250 247;
+  --text-primary: 44 42 38;
+  --text-muted: 138 133 124;
+  --radius: 20px;
 }
 
 /* ── Base ──────────────────────────────────────────────────────────────────── */
@@ -22,11 +50,11 @@
   html { scroll-behavior: smooth; }
 
   body {
-    @apply bg-surface-950 text-slate-100 font-sans antialiased;
+    @apply bg-cream-100 text-ink-800 font-sans antialiased;
     min-height: 100dvh;
   }
 
-  ::selection { @apply bg-brand-500/30 text-brand-100; }
+  ::selection { @apply bg-olive-200 text-ink-900; }
 
   /* Scrollbar */
   ::-webkit-scrollbar { width: 6px; }

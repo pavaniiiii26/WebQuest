@@ -28,7 +28,7 @@
 ### 1. Environment Setup
 Copy `.env.example` to `backend/.env`:
 ```env
-BRIGHTDATA_API_TOKEN=d1b4e808-fa33-49c5-afa6-29599f2f4fa3
+BRIGHTDATA_API_TOKEN=your_brightdata_api_token_here
 BRIGHTDATA_HOTELS_DATASET_ID=gd_l1v83015112o9h5h77
 BRIGHTDATA_ATTRACTIONS_DATASET_ID=gd_l1v83015112o9h5h88
 PORT=3001

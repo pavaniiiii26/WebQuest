@@ -7,8 +7,32 @@ export default {
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Sora', 'Inter', 'system-ui', 'sans-serif'],
+        serif: ['Playfair Display', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
       },
       colors: {
+        cream: {
+          50:  '#FBFAF7',
+          100: '#F5F2EC',
+          200: '#EBE6DC',
+          300: '#DDD6C8',
+        },
+        olive: {
+          50:  '#F4F6F1',
+          100: '#E4E9DC',
+          200: '#C9D2BB',
+          300: '#A3B38C',
+          400: '#7C9164',
+          500: '#5F7349',
+          600: '#4C5C3A',
+          700: '#3D4A30',
+          800: '#323C28',
+          900: '#2A3223',
+        },
+        ink: {
+          700: '#3F3C36',
+          800: '#2C2A26',
+          900: '#1C1B18',
+        },
         brand: {
           50:  '#f0f7ff',
           100: '#e0effe',

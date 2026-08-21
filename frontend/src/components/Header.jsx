@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Compass, ShieldCheck, Phone, User } from 'lucide-react';
+import { Compass, ShieldCheck, Phone, User, Search } from 'lucide-react';
 import ScraperHealthModal from './ScraperHealthModal.jsx';
 
 export default function Header({ isTransparent = false }) {
@@ -9,63 +9,81 @@ export default function Header({ isTransparent = false }) {
   return (
     <>
       <header
-        className={`w-full z-40 transition-colors ${
+        className={`w-full z-40 transition-colors duration-500 ${
           isTransparent
-            ? 'bg-gradient-to-b from-black/70 to-transparent text-white absolute top-0 left-0'
-            : 'bg-slate-900/90 backdrop-blur-md border-b border-slate-800 text-white sticky top-0'
+            ? 'bg-gradient-to-b from-black/50 to-transparent text-white absolute top-0 left-0'
+            : 'bg-cream-100/90 backdrop-blur-md text-ink-800 sticky top-0'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-          {/* Logo */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2.5 group">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg shadow-blue-600/30 group-hover:scale-105 transition-transform">
-              <Compass className="w-6 h-6 text-white" />
+            <div className={`w-9 h-9 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-[1.04] ${
+              isTransparent ? 'bg-white/15' : 'bg-olive-600'
+            }`}>
+              <Compass className="w-5 h-5 text-white" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-white font-sans">
-                GoExplore<span className="text-blue-500">.</span>
+              <span className={`text-lg font-serif tracking-tight ${isTransparent ? 'text-white' : 'text-ink-900'}`}>
+                GoExplore
               </span>
-              <span className="text-[10px] uppercase font-semibold text-blue-400 tracking-wider">
-                TravelGenie Scraper Engine
+              <span className={`text-[10px] uppercase tracking-[0.16em] ${isTransparent ? 'text-white/60' : 'text-olive-600'}`}>
+                TravelGenie
               </span>
             </div>
           </Link>
 
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <Link to="/" className="hover:text-blue-400 transition-colors">
+          <nav className={`hidden md:flex items-center gap-8 text-sm font-medium ${
+            isTransparent ? 'text-white/80' : 'text-ink-700/70'
+          }`}>
+            <Link to="/" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
               Destinations
             </Link>
-            <a href="#deals" className="hover:text-blue-400 transition-colors">
+            <a href="#deals" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
               Last Minute Deals
             </a>
-            <a href="#specials" className="hover:text-blue-400 transition-colors">
+            <a href="#specials" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
               Winter Specials
             </a>
-            <a href="#tours" className="hover:text-blue-400 transition-colors">
+            <a href="#tours" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
               Tour Packages
             </a>
           </nav>
 
-          {/* Action CTAs */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowHealthModal(true)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold hover:bg-emerald-500/20 transition-all"
+              className={`flex items-center gap-2 px-3.5 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
+                isTransparent
+                  ? 'bg-white/10 border border-white/20 text-white/90 hover:bg-white/20'
+                  : 'bg-olive-50 text-olive-700 hover:bg-olive-100'
+              }`}
             >
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <ShieldCheck className="w-4 h-4" />
               <span>Scraper Health</span>
             </button>
 
             <a
               href="tel:+18005550199"
-              className="hidden lg:flex items-center gap-2 text-xs text-slate-300 hover:text-white"
+              className={`hidden lg:flex items-center gap-2 text-xs ${
+                isTransparent ? 'text-white/75 hover:text-white' : 'text-ink-700/60 hover:text-ink-800'
+              }`}
             >
-              <Phone className="w-3.5 h-3.5 text-blue-400" />
+              <Phone className="w-3.5 h-3.5" />
               <span>+1 (800) 555-0199</span>
             </a>
 
-            <button className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm shadow-md shadow-blue-600/20 hover:shadow-blue-600/40 transition-all">
+            <button
+              className={`p-2.5 rounded-full transition-all duration-300 ${
+                isTransparent
+                  ? 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
+                  : 'bg-white text-ink-700 hover:bg-cream-200'
+              }`}
+              aria-label="Search"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+
+            <button className="hidden sm:flex items-center gap-2 px-5 py-2.5 rounded-full bg-olive-600 hover:bg-olive-500 text-white font-medium text-sm transition-all duration-300">
               <User className="w-4 h-4" />
               <span>Sign In</span>
             </button>
