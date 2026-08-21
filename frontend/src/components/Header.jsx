@@ -34,12 +34,12 @@ export default function Header({ isTransparent = false }) {
           <Link to="/" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
             Destinations
           </Link>
-          <a href="#deals" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
-            Last Minute Deals
-          </a>
-          <a href="#specials" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
+          <Link to="/specials/summer" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
+            Summer Specials
+          </Link>
+          <Link to="/specials/winter" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
             Winter Specials
-          </a>
+          </Link>
           <a href="#tours" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
             Tour Packages
           </a>

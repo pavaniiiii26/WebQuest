@@ -7,6 +7,7 @@ import {
   CheckCircle,
   ArrowLeft,
   Loader2,
+  X,
 } from 'lucide-react';
 import Header from '../components/Header.jsx';
 import ItineraryMap from '../components/ItineraryMap.jsx';
@@ -29,6 +30,9 @@ export default function DetailPage() {
   const [ratesLoading, setRatesLoading] = useState(false);
   const [ratesError, setRatesError] = useState('');
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [hotelInfoOpen, setHotelInfoOpen] = useState(false);
+  const [userRating, setUserRating] = useState(0);
+  const [ratingSaved, setRatingSaved] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -80,6 +84,11 @@ export default function DetailPage() {
   const taxesAndFees = nights ? Math.round(roomSubtotal * 0.12) + 25 : 0;
   const totalCost = roomSubtotal + taxesAndFees;
   const guests = Number.parseInt(persons, 10) || 1;
+  const visitorReviews = [
+    { name: 'Maya R.', rating: 5, text: 'The staff made every detail feel personal. The room and amenities were exactly as pictured.' },
+    { name: 'Daniel K.', rating: 5, text: 'A beautiful stay in an excellent location. We especially loved the pool and breakfast.' },
+    { name: 'Priya S.', rating: 4, text: 'Comfortable, polished, and easy to recommend. The concierge was incredibly helpful.' },
+  ];
 
   const handleCheckRates = async () => {
     setBookingConfirmed(false);
@@ -234,7 +243,11 @@ export default function DetailPage() {
             </div>
 
             <div className="pt-4 flex items-center gap-4">
-              <button className="px-6 py-3 rounded-full bg-olive-600 hover:bg-olive-500 text-white font-medium text-sm transition-all duration-300">
+              <button
+                type="button"
+                onClick={() => { setHotelInfoOpen(true); setRatingSaved(false); }}
+                className="px-6 py-3 rounded-full bg-olive-600 hover:bg-olive-500 text-white font-medium text-sm transition-all duration-300"
+              >
                 More info & booking
               </button>
               <a
