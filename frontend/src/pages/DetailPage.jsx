@@ -438,6 +438,42 @@ export default function DetailPage() {
         </section>
       </main>
 
+      {hotelInfoOpen && (
+        <div className="fixed inset-0 z-[80] flex items-end justify-center p-0 sm:items-center sm:p-5">
+          <button
+            type="button"
+            aria-label="Close hotel details"
+            onClick={() => setHotelInfoOpen(false)}
+            className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm"
+          />
+          <section
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="hotel-details-title"
+            className="relative z-10 max-h-[92vh] w-full max-w-2xl overflow-y-auto rounded-t-[28px] bg-white shadow-2xl sm:rounded-[28px]"
+          >
+            <div className="relative h-48 sm:h-60 overflow-hidden">
+              <img src={activeHotel.imageUrl} alt={activeHotel.name} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 to-transparent" />
+              <button type="button" aria-label="Close" onClick={() => setHotelInfoOpen(false)} className="absolute right-4 top-4 rounded-full bg-white/90 p-2 text-ink-800 hover:bg-white"><X className="h-4 w-4" /></button>
+              <div className="absolute bottom-5 left-6 right-6 text-white"><p className="text-xs text-white/75">{activeHotel.address}</p><h2 id="hotel-details-title" className="mt-1 font-serif text-2xl sm:text-3xl">{activeHotel.name}</h2></div>
+            </div>
+            <div className="p-5 sm:p-7">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-cream-300 pb-5">
+                <div><p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-olive-700">Guest rating</p><p className="mt-1 flex items-center gap-1.5 text-lg font-semibold text-ink-900"><Star className="h-5 w-5 fill-olive-500 text-olive-500" /> {activeHotel.rating} <span className="text-sm font-normal text-ink-700/55">Exceptional</span></p></div>
+                <span className="rounded-full bg-olive-50 px-3 py-1.5 text-sm font-medium text-olive-700">${activeHotel.pricePerNight} / night</span>
+              </div>
+
+              <div className="mt-6"><h3 className="font-serif text-2xl text-ink-900">Amenity highlights</h3><div className="mt-3 flex flex-wrap gap-2">{activeHotel.amenities?.map((amenity) => <span key={amenity} className="inline-flex items-center gap-1.5 rounded-full bg-olive-50 px-3 py-2 text-sm text-olive-800"><CheckCircle className="h-4 w-4 text-olive-600" />{amenity}</span>)}</div></div>
+
+              <div className="mt-7"><h3 className="font-serif text-2xl text-ink-900">Past visitor reviews</h3><div className="mt-3 space-y-3">{visitorReviews.map((review) => <article key={review.name} className="rounded-2xl bg-cream-50 p-4"><div className="flex items-center justify-between"><p className="font-medium text-ink-900">{review.name}</p><span className="flex items-center gap-0.5 text-xs text-olive-700"><Star className="h-3.5 w-3.5 fill-olive-500 text-olive-500" />{review.rating}.0</span></div><p className="mt-2 text-sm leading-relaxed text-ink-700/65">“{review.text}”</p></article>)}</div></div>
+
+              <div className="mt-7 rounded-2xl border border-cream-300 p-4 sm:p-5"><h3 className="font-serif text-xl text-ink-900">How was your experience?</h3><p className="mt-1 text-sm text-ink-700/60">Choose a star rating for {activeHotel.name}.</p><div className="mt-3 flex items-center gap-1">{[1, 2, 3, 4, 5].map((rating) => <button key={rating} type="button" aria-label={`Rate ${rating} stars`} aria-pressed={userRating === rating} onClick={() => { setUserRating(rating); setRatingSaved(false); }} className="rounded-lg p-1 transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-olive-500"><Star className={`h-7 w-7 ${rating <= userRating ? 'fill-olive-500 text-olive-500' : 'text-cream-300'}`} /></button>)}</div>{ratingSaved && <p role="status" className="mt-3 text-sm font-medium text-olive-700">Thanks — your {userRating}-star rating has been saved.</p>}<button type="button" disabled={!userRating} onClick={() => setRatingSaved(true)} className="mt-4 rounded-full bg-olive-600 px-5 py-2.5 text-sm font-medium text-white hover:bg-olive-500 disabled:cursor-not-allowed disabled:bg-olive-600/45">Save rating</button></div>
+            </div>
+          </section>
+        </div>
+      )}
+
       <footer className="py-8 text-center text-xs text-ink-700/40">
         <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2 text-ink-700/60 font-medium">
