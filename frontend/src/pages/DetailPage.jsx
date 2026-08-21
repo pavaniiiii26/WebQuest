@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import {
   Calendar,
@@ -6,11 +6,12 @@ import {
   Star,
   CheckCircle,
   ArrowLeft,
+  Loader2,
 } from 'lucide-react';
 import Header from '../components/Header.jsx';
 import ItineraryMap from '../components/ItineraryMap.jsx';
 import PlaceCard from '../components/PlaceCard.jsx';
-import { fetchDestinationDetail } from '../services/api.js';
+import { fetchDestinationDetail, searchDestinations } from '../services/api.js';
 import { DESTINATIONS_DATA } from '../data/destinationsData.js';
 
 export default function DetailPage() {
@@ -24,6 +25,10 @@ export default function DetailPage() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [persons, setPersons] = useState('2 Persons');
+  const [rateData, setRateData] = useState(null);
+  const [ratesLoading, setRatesLoading] = useState(false);
+  const [ratesError, setRatesError] = useState('');
+  const [bookingConfirmed, setBookingConfirmed] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -62,6 +67,56 @@ export default function DetailPage() {
     rating: h.rating,
   })) || [];
   const routeStops = curated?.stops || detailData?.stops || [];
+  const today = new Date().toISOString().slice(0, 10);
+  const quotedHotel = rateData?.hotels?.find((hotel) => hotel.name === selectedHotel?.name)
+    || rateData?.hotels?.[0]
+    || activeHotel;
+  const nights = useMemo(() => {
+    if (!checkIn || !checkOut) return 0;
+    const diff = new Date(`${checkOut}T00:00:00`) - new Date(`${checkIn}T00:00:00`);
+    return diff > 0 ? Math.round(diff / 86_400_000) : 0;
+  }, [checkIn, checkOut]);
+  const roomSubtotal = nights * Number(quotedHotel.pricePerNight || 0);
+  const taxesAndFees = nights ? Math.round(roomSubtotal * 0.12) + 25 : 0;
+  const totalCost = roomSubtotal + taxesAndFees;
+  const guests = Number.parseInt(persons, 10) || 1;
+
+  const handleCheckRates = async () => {
+    setBookingConfirmed(false);
+    setRatesError('');
+    if (!checkIn || !checkOut) {
+      setRatesError('Choose both check-in and check-out dates to see your total.');
+      return;
+    }
+    if (!nights) {
+      setRatesError('Check-out must be at least one day after check-in.');
+      return;
+    }
+
+    setRatesLoading(true);
+    try {
+      const data = await searchDestinations({
+        destination: destinationName,
+        checkIn,
+        checkOut,
+        guests,
+      });
+      setRateData(data);
+      if (data.hotels?.length) {
+        const matchingHotel = data.hotels.find((hotel) => hotel.name === selectedHotel?.name);
+        setSelectedHotel(matchingHotel || data.hotels[0]);
+      }
+    } catch (error) {
+      setRatesError('We could not refresh live rates. Please try again.');
+    } finally {
+      setRatesLoading(false);
+    }
+  };
+
+  const handleConfirmBooking = () => {
+    if (!rateData || !nights) return;
+    setBookingConfirmed(true);
+  };
 
   return (
     <div className="min-h-screen bg-cream-100 text-ink-800 font-sans flex flex-col">
@@ -247,7 +302,18 @@ export default function DetailPage() {
           </div>
         </section>
 
-        <section className="bg-white rounded-[28px] p-5 sm:p-6 shadow-sm">
+        <section aria-labelledby="booking-title" className="bg-white rounded-[28px] p-5 sm:p-6 shadow-sm scroll-mt-8">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.18em] text-olive-700 font-semibold">Plan your stay</p>
+              <h3 id="booking-title" className="font-serif text-2xl text-ink-900">Check your trip cost</h3>
+            </div>
+            {rateData && !bookingConfirmed && (
+              <span className="rounded-full bg-olive-50 px-3 py-1 text-xs font-medium text-olive-700">
+                Rates updated
+              </span>
+            )}
+          </div>
           <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 items-center">
             <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-cream-50">
               <Calendar className="w-5 h-5 text-olive-600 flex-shrink-0" />
@@ -255,8 +321,13 @@ export default function DetailPage() {
                 <span className="text-[10px] uppercase tracking-wider text-ink-700/45">Check-in</span>
                 <input
                   type="date"
+                  min={today}
                   value={checkIn}
-                  onChange={(e) => setCheckIn(e.target.value)}
+                  onChange={(e) => {
+                    setCheckIn(e.target.value);
+                    setRateData(null);
+                    setBookingConfirmed(false);
+                  }}
                   className="bg-transparent text-xs font-medium text-ink-800 focus:outline-none cursor-pointer"
                 />
               </div>
@@ -268,8 +339,13 @@ export default function DetailPage() {
                 <span className="text-[10px] uppercase tracking-wider text-ink-700/45">Check-out</span>
                 <input
                   type="date"
+                  min={checkIn || today}
                   value={checkOut}
-                  onChange={(e) => setCheckOut(e.target.value)}
+                  onChange={(e) => {
+                    setCheckOut(e.target.value);
+                    setRateData(null);
+                    setBookingConfirmed(false);
+                  }}
                   className="bg-transparent text-xs font-medium text-ink-800 focus:outline-none cursor-pointer"
                 />
               </div>
@@ -281,7 +357,11 @@ export default function DetailPage() {
                 <span className="text-[10px] uppercase tracking-wider text-ink-700/45">Persons</span>
                 <select
                   value={persons}
-                  onChange={(e) => setPersons(e.target.value)}
+                  onChange={(e) => {
+                    setPersons(e.target.value);
+                    setRateData(null);
+                    setBookingConfirmed(false);
+                  }}
                   className="bg-transparent text-xs font-medium text-ink-800 focus:outline-none cursor-pointer"
                 >
                   <option value="1 Person">1 Person</option>
@@ -291,10 +371,57 @@ export default function DetailPage() {
               </div>
             </div>
 
-            <button className="w-full py-3.5 px-6 rounded-full bg-olive-600 hover:bg-olive-500 active:scale-[0.99] text-white font-medium text-sm transition-all duration-300 cursor-pointer">
-              Check rates
+            <button
+              type="button"
+              onClick={handleCheckRates}
+              disabled={ratesLoading}
+              className="w-full py-3.5 px-6 rounded-full bg-olive-600 hover:bg-olive-500 disabled:bg-olive-600/60 disabled:cursor-wait active:scale-[0.99] text-white font-medium text-sm transition-all duration-300 cursor-pointer inline-flex items-center justify-center gap-2"
+            >
+              {ratesLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+              {ratesLoading ? 'Checking rates…' : 'Check rates'}
             </button>
           </div>
+
+          {ratesError && (
+            <p role="alert" className="mt-3 text-sm text-rose-700">{ratesError}</p>
+          )}
+
+          {rateData && !ratesError && (
+            <div className="mt-5 rounded-2xl border border-cream-300 bg-cream-50 p-4 sm:p-5">
+              <div className="flex flex-wrap items-start justify-between gap-3 border-b border-cream-300 pb-4">
+                <div>
+                  <p className="font-medium text-ink-900">{quotedHotel.name}</p>
+                  <p className="mt-1 text-xs text-ink-700/60">
+                    {nights} {nights === 1 ? 'night' : 'nights'} · {guests} {guests === 1 ? 'guest' : 'guests'} · {checkIn} to {checkOut}
+                  </p>
+                </div>
+                <p className="text-right text-sm text-ink-700/75">
+                  ${quotedHotel.pricePerNight} <span className="text-xs">/ night</span>
+                </p>
+              </div>
+
+              <dl className="space-y-2 py-4 text-sm text-ink-700/75">
+                <div className="flex justify-between gap-4"><dt>Room rate</dt><dd>${roomSubtotal.toLocaleString()}</dd></div>
+                <div className="flex justify-between gap-4"><dt>Taxes & fees</dt><dd>${taxesAndFees.toLocaleString()}</dd></div>
+                <div className="flex justify-between gap-4 border-t border-cream-300 pt-3 font-semibold text-ink-900"><dt>Trip total</dt><dd>${totalCost.toLocaleString()} {quotedHotel.currency || 'USD'}</dd></div>
+              </dl>
+
+              {bookingConfirmed ? (
+                <div role="status" className="flex items-start gap-3 rounded-xl bg-olive-100 p-3 text-sm text-olive-800">
+                  <CheckCircle className="mt-0.5 h-4 w-4 flex-none" />
+                  <span><strong>Hotel booked — trip planned.</strong> Your {nights}-night stay at {quotedHotel.name} is confirmed for ${totalCost.toLocaleString()} {quotedHotel.currency || 'USD'}.</span>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={handleConfirmBooking}
+                  className="w-full rounded-full bg-ink-800 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-ink-700"
+                >
+                  Confirm for ${totalCost.toLocaleString()} {quotedHotel.currency || 'USD'}
+                </button>
+              )}
+            </div>
+          )}
         </section>
       </main>
 

@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Compass, Phone, User, Search } from 'lucide-react';
 
 export default function Header({ isTransparent = false }) {
+  const navigate = useNavigate();
   return (
     <header
       className={`w-full z-40 transition-colors duration-500 ${
@@ -57,12 +58,7 @@ export default function Header({ isTransparent = false }) {
 
           <button
             type="button"
-            onClick={() => {
-              document.getElementById('destinations')?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start',
-              });
-            }}
+            onClick={() => navigate('/search')}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               isTransparent
                 ? 'bg-white/10 border border-white/20 text-white hover:bg-white/20'
