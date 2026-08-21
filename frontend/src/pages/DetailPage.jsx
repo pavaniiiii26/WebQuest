@@ -161,7 +161,7 @@ export default function DetailPage() {
           </p>
           <button
             type="button"
-            onClick={() => document.getElementById('itinerary')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+            onClick={() => navigate(`/itinerary/${encodeURIComponent(destinationName)}`)}
             className="inline-flex items-center px-6 py-3 rounded-full bg-white/15 hover:bg-white/25 border border-white/25 text-white text-sm font-medium backdrop-blur-md transition-all duration-300"
           >
             View the itinerary
