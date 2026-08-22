@@ -153,7 +153,8 @@ This is the core engineering differentiator of the project: a **Zero-LLM, fully 
 
 The result: the app degrades gracefully instead of failing loudly. A user searching Bali during a scrape hiccup sees slightly-stale-but-real data with a "stale" flag, not a blank page or a fake AI-generated listing.
 
-![Self-Healing Flow Diagram](screenshots/04-self-healing-diagram.png)
+<img width="640" height="416" alt="image" src="https://github.com/user-attachments/assets/18ee0c62-f34d-403c-811c-f82bafb3d366" />
+
 <!-- SCREENSHOT 4: If you have an architecture/flow diagram of the pipeline (trigger → validate → retry → cache), put it here. If not, consider adding one — it's a strong visual for judges. -->
 
 ## Scraper Health Monitor
@@ -169,7 +170,8 @@ It shows, in real time:
 - Whether the last response served was live or cache-degraded (`isStale`)
 - A structured audit log of every scrape attempt
 
-![Scraper Health Dashboard](screenshots/05-scraper-health.png)
+<img width="640" height="416" alt="image" src="https://github.com/user-attachments/assets/04088bb1-0a58-44ac-bc95-d9f56c59e0c4" />
+
 <!-- SCREENSHOT 5: Screenshot of the actual /api/scraper-health JSON response or a rendered dashboard view of it. This is your #1 differentiator screenshot — make sure it's clear and legible, zoom in if it's raw JSON. -->
 
 ## See Self-Healing in Action
