@@ -409,4 +409,4 @@ npm run dev
 
 [#team](#team)
 
-Built for the ScrapeVerse Hackathon (PCCOER) by Pavani, Prakriti Adak, and Kartik Patil.
+Built for the ScrapeVerse Hackathon BrightData, Team Members: Pavani Patel, Anurag Ghosh
