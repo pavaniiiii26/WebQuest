@@ -16,14 +16,24 @@ const PORT = config.port;
 readCache();
 
 // ── CORS ─────────────────────────────────────────────────────────────────────
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:3000',
+  'https://web-quest-iota.vercel.app',
+];
+
 app.use(
   cors({
-    // Permit local Vite instances, including when Vite chooses the next free port.
     origin(origin, callback) {
-      if (!origin || /^https?:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)) {
+      if (
+        !origin ||
+        allowedOrigins.includes(origin) ||
+        /^https?:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin)
+      ) {
         callback(null, true);
         return;
       }
+
       callback(new Error('Origin is not allowed by CORS'));
     },
     credentials: true,
