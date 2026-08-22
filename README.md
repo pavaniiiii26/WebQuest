@@ -72,7 +72,8 @@ Voyalette is a travel discovery platform where every listing — hotel, price, a
 - Open a **destination detail page** with a full-bleed hero, floating booking widget, and a gallery of real properties with real prices.
 - (For judges/devs) View the scraper's live health at `/api/scraper-health` — see exactly which fields came from which fallback path, what got dropped, and why.
 
-![Destination Detail Page](screenshots/02-destination-detail.png)
+<img width="640" height="416" alt="WhatsApp Image 2026-08-22 at 1 51 37 PM" src="https://github.com/user-attachments/assets/62260c35-4d2c-4f19-a516-dd1910049ee6" />
+
 <!-- SCREENSHOT 2: A destination page (e.g. Bali) showing hero image, booking widget, and property gallery. -->
 
 ## What Is Web Scraping?
@@ -119,7 +120,8 @@ BRIGHTDATA_HOTELS_DATASET_ID=gd_l1v83015112o9h5h77
 BRIGHTDATA_ATTRACTIONS_DATASET_ID=gd_l1v83015112o9h5h88
 ```
 
-![Bright Data Dashboard / Dataset Config](screenshots/03-brightdata-dashboard.png)
+<img width="1883" height="607" alt="image" src="https://github.com/user-attachments/assets/51333a23-8fc3-48ee-8ffe-3255a72bbfeb" />
+
 <!-- SCREENSHOT 3: Your Bright Data dashboard — dataset config, or a snapshot/collection run in progress. Proves you actually used the platform live. -->
 
 ## Use of Bright Data Scraper Studio
