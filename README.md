@@ -5,6 +5,7 @@
 Voyalette is a travel discovery web app powered by a **Self-Healing Bright Data Scraper Engine (Zero-LLM)**. It pulls live hotel and attraction data via Bright Data, validates and repairs it in real time, and serves it through a premium travel UI — with a public dashboard showing exactly how healthy the scraper is at any moment.
 
 **🔗 Live App:** [web-quest-iota.vercel.app](https://web-quest-iota.vercel.app/)
+** Youtube Demo Vid:** https://www.youtube.com/watch?v=BTOiCM9XXg8 
 **💻 Repo:** [github.com/pavaniiiii26/WebQuest](https://github.com/pavaniiiii26/WebQuest)
 
 <img width="640" height="416" alt="WhatsApp Image 2026-08-22 at 1 50 19 PM" src="https://github.com/user-attachments/assets/d47e3e87-257f-4c3e-9fd1-c756f23293fd" />
