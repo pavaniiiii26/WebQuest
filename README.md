@@ -7,7 +7,7 @@ Voyalette is a travel discovery web app powered by a **Self-Healing Bright Data 
 **🔗 Live App:** [web-quest-iota.vercel.app](https://web-quest-iota.vercel.app/)
 **💻 Repo:** [github.com/pavaniiiii26/WebQuest](https://github.com/pavaniiiii26/WebQuest)
 
-![Homepage Hero](screenshots/01-homepage-hero.png)
+<img width="640" height="416" alt="WhatsApp Image 2026-08-22 at 1 50 19 PM" src="https://github.com/user-attachments/assets/d47e3e87-257f-4c3e-9fd1-c756f23293fd" />
 <!-- SCREENSHOT 1: Full landing page — hero + search bar. This is the first thing a judge sees, put your best shot here. -->
 
 ---
@@ -72,7 +72,8 @@ Voyalette is a travel discovery platform where every listing — hotel, price, a
 - Open a **destination detail page** with a full-bleed hero, floating booking widget, and a gallery of real properties with real prices.
 - (For judges/devs) View the scraper's live health at `/api/scraper-health` — see exactly which fields came from which fallback path, what got dropped, and why.
 
-![Destination Detail Page](screenshots/02-destination-detail.png)
+<img width="640" height="416" alt="WhatsApp Image 2026-08-22 at 1 51 37 PM" src="https://github.com/user-attachments/assets/62260c35-4d2c-4f19-a516-dd1910049ee6" />
+
 <!-- SCREENSHOT 2: A destination page (e.g. Bali) showing hero image, booking widget, and property gallery. -->
 
 ## What Is Web Scraping?
@@ -119,7 +120,8 @@ BRIGHTDATA_HOTELS_DATASET_ID=gd_l1v83015112o9h5h77
 BRIGHTDATA_ATTRACTIONS_DATASET_ID=gd_l1v83015112o9h5h88
 ```
 
-![Bright Data Dashboard / Dataset Config](screenshots/03-brightdata-dashboard.png)
+<img width="1883" height="607" alt="image" src="https://github.com/user-attachments/assets/51333a23-8fc3-48ee-8ffe-3255a72bbfeb" />
+
 <!-- SCREENSHOT 3: Your Bright Data dashboard — dataset config, or a snapshot/collection run in progress. Proves you actually used the platform live. -->
 
 ## Use of Bright Data Scraper Studio
@@ -132,8 +134,6 @@ Scraper Studio was central to how this project's data pipeline was built, not ju
 - **Field mapping** — configured which fields to extract (name, price, rating, image, location) directly in Scraper Studio, which is also *why* our self-healing field-fallback logic exists downstream — Scraper Studio gives us the primary extraction path, and our own code adds the fallback paths for when a site changes shape between collector runs.
 - **Dataset IDs** — the two dataset IDs in our `.env` (`BRIGHTDATA_HOTELS_DATASET_ID`, `BRIGHTDATA_ATTRACTIONS_DATASET_ID`) are the collectors we configured in Scraper Studio, triggered at runtime via the Dataset API.
 
-![Scraper Studio Collector Config](screenshots/06-scraper-studio.png)
-<!-- SCREENSHOT 6: Scraper Studio itself — your collector configuration screen, field mapping, or a run history for the hotel/attraction collectors. This directly proves criterion #4 ("Use of Scraper Studio"), so make it clear and unambiguous. -->
 
 ## Self-Healing Scraper Pipeline
 
@@ -151,7 +151,8 @@ This is the core engineering differentiator of the project: a **Zero-LLM, fully 
 
 The result: the app degrades gracefully instead of failing loudly. A user searching Bali during a scrape hiccup sees slightly-stale-but-real data with a "stale" flag, not a blank page or a fake AI-generated listing.
 
-![Self-Healing Flow Diagram](screenshots/04-self-healing-diagram.png)
+<img width="640" height="416" alt="image" src="https://github.com/user-attachments/assets/18ee0c62-f34d-403c-811c-f82bafb3d366" />
+
 <!-- SCREENSHOT 4: If you have an architecture/flow diagram of the pipeline (trigger → validate → retry → cache), put it here. If not, consider adding one — it's a strong visual for judges. -->
 
 ## Scraper Health Monitor
@@ -167,7 +168,8 @@ It shows, in real time:
 - Whether the last response served was live or cache-degraded (`isStale`)
 - A structured audit log of every scrape attempt
 
-![Scraper Health Dashboard](screenshots/05-scraper-health.png)
+<img width="640" height="416" alt="image" src="https://github.com/user-attachments/assets/04088bb1-0a58-44ac-bc95-d9f56c59e0c4" />
+
 <!-- SCREENSHOT 5: Screenshot of the actual /api/scraper-health JSON response or a rendered dashboard view of it. This is your #1 differentiator screenshot — make sure it's clear and legible, zoom in if it's raw JSON. -->
 
 ## See Self-Healing in Action
@@ -184,7 +186,7 @@ This is the section to walk judges through live during the demo — it's one thi
 4. **Open `/api/scraper-health`** (or the in-app `Dashboard.jsx` view) — the failure, the fallback path taken, and the retry attempts are all logged there, not hidden.
 5. **Fix the token / field mapping** — search again and show the pipeline recovering to live data automatically, no restart needed.
 
-![Self-Healing Demo Sequence](screenshots/07-self-healing-demo.png)
+<img width="1280" height="260" alt="WhatsApp Image 2026-08-22 at 4 23 10 PM" src="https://github.com/user-attachments/assets/563ffa04-87d4-4fec-a5e8-b6c8429ee9c4" />
 <!-- SCREENSHOT 7 (or GIF): A short before/during/after sequence — normal search, a healing/failure state (RepairTimeline.jsx or LiveLogs.jsx catching the event), then recovery. A GIF here is worth more than any other single asset in this README for criterion #5. -->
 
 ## Tech Stack
@@ -398,8 +400,7 @@ npm run dev
 | 3 | `03-brightdata-dashboard.png` | Bright Data dashboard / dataset / collection run | "Bright Data Integration" |
 | 4 | `04-self-healing-diagram.png` | Pipeline/architecture diagram (optional but recommended) | "Self-Healing Scraper Pipeline" |
 | 5 | `05-scraper-health.png` | `/api/scraper-health` response or dashboard | "Scraper Health Monitor" |
-| 6 | `06-scraper-studio.png` | Scraper Studio collector config / field mapping / run history | "Use of Bright Data Scraper Studio" |
-| 7 | `07-self-healing-demo.png` (or `.gif`) | Before/during/after: normal search → simulated failure → healing → recovery | "See Self-Healing in Action" |
+| 6 | `06-self-healing-demo.png` (or `.gif`) | Before/during/after: normal search → simulated failure → healing → recovery | "See Self-Healing in Action" |
 
 **Priority order if you're short on time:** #6 (Scraper Studio) and #7 (self-healing demo, ideally a GIF) matter most — they directly prove judging criteria #4 and #5, which are otherwise the easiest to lose points on since they require *evidence*, not just a description.
 
