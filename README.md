@@ -7,7 +7,7 @@ Voyalette is a travel discovery web app powered by a **Self-Healing Bright Data 
 **🔗 Live App:** [web-quest-iota.vercel.app](https://web-quest-iota.vercel.app/)
 **💻 Repo:** [github.com/pavaniiiii26/WebQuest](https://github.com/pavaniiiii26/WebQuest)
 
-![Homepage Hero](screenshots/01-homepage-hero.png)
+<img width="1280" height="832" alt="WhatsApp Image 2026-08-22 at 1 50 19 PM" src="https://github.com/user-attachments/assets/d47e3e87-257f-4c3e-9fd1-c756f23293fd" />
 <!-- SCREENSHOT 1: Full landing page — hero + search bar. This is the first thing a judge sees, put your best shot here. -->
 
 ---
