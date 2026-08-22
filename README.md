@@ -1,4 +1,4 @@
-# ✈️ Voyalette (TravelGenie) — Self-Healing Bright Data Travel Discovery Platform
+# ✈️ Voyalette — Self-Healing Bright Data Travel Discovery Platform
 
 > Real scraped travel data. No hallucinations, just facts.
 
