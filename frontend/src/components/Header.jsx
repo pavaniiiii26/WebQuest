@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Compass, Phone, User, Search } from 'lucide-react';
 
 export default function Header({ isTransparent = false }) {
+  const navigate = useNavigate();
   return (
     <header
       className={`w-full z-40 transition-colors duration-500 ${
@@ -33,12 +34,12 @@ export default function Header({ isTransparent = false }) {
           <Link to="/" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
             Destinations
           </Link>
-          <a href="#deals" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
-            Last Minute Deals
-          </a>
-          <a href="#specials" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
+          <Link to="/specials/summer" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
+            Summer Specials
+          </Link>
+          <Link to="/specials/winter" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
             Winter Specials
-          </a>
+          </Link>
           <a href="#tours" className="hover:opacity-100 opacity-90 transition-opacity duration-300">
             Tour Packages
           </a>
@@ -56,6 +57,8 @@ export default function Header({ isTransparent = false }) {
           </a>
 
           <button
+            type="button"
+            onClick={() => navigate('/search')}
             className={`p-2.5 rounded-full transition-all duration-300 ${
               isTransparent
                 ? 'bg-white/10 border border-white/20 text-white hover:bg-white/20'

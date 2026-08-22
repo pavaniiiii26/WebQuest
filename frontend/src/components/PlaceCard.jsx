@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { Bookmark, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-export default function PlaceCard({ place, index, isDesktop = false }) {
+export default function PlaceCard({ place, index, isDesktop = false, onOpen }) {
   const [bookmarked, setBookmarked] = useState(false);
 
   return (
     <motion.div
+      onClick={() => onOpen?.()}
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{
@@ -15,7 +16,7 @@ export default function PlaceCard({ place, index, isDesktop = false }) {
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{ y: -4 }}
-      className={`group relative overflow-hidden rounded-[22px] shadow-sm transition-shadow duration-500 hover:shadow-md select-none flex-shrink-0 ${
+      className={`group relative overflow-hidden rounded-[22px] shadow-sm transition-shadow duration-500 hover:shadow-md select-none flex-shrink-0 ${onOpen ? 'cursor-pointer' : ''} ${
         isDesktop
           ? 'w-full h-[280px]'
           : 'w-full h-[210px]'

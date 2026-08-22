@@ -222,11 +222,13 @@ export default function HomePage() {
               {searchResults.attractions.slice(0, 3).map((item, idx) => (
                 <div
                   key={idx}
+                  onClick={() => navigate(`/experience/${encodeURIComponent(searchResults.destination || selectedDestination)}/${idx}`)}
                   className="relative h-64 rounded-[22px] overflow-hidden group cursor-pointer"
                 >
                   <img
                     src={item.imageUrl}
                     alt={item.name}
+                    onError={(e) => { e.currentTarget.src = 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=800&auto=format&fit=crop'; }}
                     className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out brightness-[0.9]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
@@ -304,7 +306,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-20">
+        <section id="about" className="py-20">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14 space-y-3">
               <h2 className="font-serif text-3xl sm:text-[2.2rem] font-medium text-ink-900">Travel with confidence</h2>

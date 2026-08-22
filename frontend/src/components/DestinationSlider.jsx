@@ -185,6 +185,7 @@ export default function DestinationSlider({ destinations, onSelectDestination })
 
           <button
             type="button"
+            onClick={() => navigate('/search')}
             className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/15 backdrop-blur-md transition-all duration-300"
             aria-label="Search"
           >
@@ -239,7 +240,7 @@ export default function DestinationSlider({ destinations, onSelectDestination })
             </AnimatePresence>
           </div>
 
-          <div className="w-full lg:w-auto flex-shrink-0 pl-6 sm:pl-10 lg:pl-0 lg:pr-10 pb-6 lg:pb-8">
+          <div className="w-full lg:w-auto flex-shrink-0 pl-6 sm:pl-10 lg:pl-0 lg:pr-10 pt-4 pb-6 lg:pb-8">
             <motion.div
               layout
               className="flex items-end gap-3 overflow-x-auto scrollbar-none pr-6 lg:pr-0"

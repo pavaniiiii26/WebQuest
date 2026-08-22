@@ -398,6 +398,37 @@ const SEED_DESTINATIONS = [
       },
     ],
   },
+  {
+    id: 'iceland',
+    name: 'Iceland',
+    country: 'Iceland',
+    tagline: 'Northern lights, lava fields & glacier lagoons',
+    description: 'Discover dramatic coastlines, geothermal lagoons, and winter skies from Iceland’s most distinctive stays.',
+    imageUrl: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=1200&auto=format&fit=crop',
+    hotels: [
+      {
+        name: 'The Retreat at Blue Lagoon Iceland',
+        pricePerNight: 720,
+        currency: 'USD',
+        rating: 4.9,
+        address: 'Norðurljósavegur, Grindavík, Iceland',
+        imageUrl: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=800&auto=format&fit=crop',
+        amenities: ['Private Lagoon Access', 'Geothermal Spa', 'Northern Lights Views'],
+        url: 'https://www.booking.com/',
+      },
+      {
+        name: 'Hotel Rangá',
+        pricePerNight: 410,
+        currency: 'USD',
+        rating: 4.7,
+        address: 'Hvolsvöllur, South Iceland',
+        imageUrl: 'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=800&auto=format&fit=crop',
+        amenities: ['Observatory', 'Aurora Wake-up Call', 'Riverside Dining'],
+        url: 'https://www.booking.com/',
+      },
+    ],
+    attractions: [],
+  },
 ];
 
 // Helper to read cache file
@@ -405,7 +436,27 @@ export function readCache() {
   try {
     if (fs.existsSync(CACHE_FILE)) {
       const raw = fs.readFileSync(CACHE_FILE, 'utf-8');
-      return JSON.parse(raw);
+      const cache = JSON.parse(raw);
+      let updated = false;
+      SEED_DESTINATIONS.forEach((destination) => {
+        const key = destination.name.toLowerCase();
+        if (!cache[key]) {
+          cache[key] = {
+            destination: destination.name,
+            country: destination.country,
+            tagline: destination.tagline,
+            description: destination.description,
+            imageUrl: destination.imageUrl,
+            hotels: destination.hotels,
+            attractions: destination.attractions,
+            cachedAt: new Date().toISOString(),
+            source: 'initial_seed',
+          };
+          updated = true;
+        }
+      });
+      if (updated) writeCache(cache);
+      return cache;
     }
   } catch (err) {
     console.error('Error reading cache file:', err.message);
