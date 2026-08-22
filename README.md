@@ -134,8 +134,6 @@ Scraper Studio was central to how this project's data pipeline was built, not ju
 - **Field mapping** — configured which fields to extract (name, price, rating, image, location) directly in Scraper Studio, which is also *why* our self-healing field-fallback logic exists downstream — Scraper Studio gives us the primary extraction path, and our own code adds the fallback paths for when a site changes shape between collector runs.
 - **Dataset IDs** — the two dataset IDs in our `.env` (`BRIGHTDATA_HOTELS_DATASET_ID`, `BRIGHTDATA_ATTRACTIONS_DATASET_ID`) are the collectors we configured in Scraper Studio, triggered at runtime via the Dataset API.
 
-![Scraper Studio Collector Config](screenshots/06-scraper-studio.png)
-<!-- SCREENSHOT 6: Scraper Studio itself — your collector configuration screen, field mapping, or a run history for the hotel/attraction collectors. This directly proves criterion #4 ("Use of Scraper Studio"), so make it clear and unambiguous. -->
 
 ## Self-Healing Scraper Pipeline
 
@@ -188,7 +186,7 @@ This is the section to walk judges through live during the demo — it's one thi
 4. **Open `/api/scraper-health`** (or the in-app `Dashboard.jsx` view) — the failure, the fallback path taken, and the retry attempts are all logged there, not hidden.
 5. **Fix the token / field mapping** — search again and show the pipeline recovering to live data automatically, no restart needed.
 
-![Self-Healing Demo Sequence](screenshots/07-self-healing-demo.png)
+<img width="1280" height="260" alt="WhatsApp Image 2026-08-22 at 4 23 10 PM" src="https://github.com/user-attachments/assets/563ffa04-87d4-4fec-a5e8-b6c8429ee9c4" />
 <!-- SCREENSHOT 7 (or GIF): A short before/during/after sequence — normal search, a healing/failure state (RepairTimeline.jsx or LiveLogs.jsx catching the event), then recovery. A GIF here is worth more than any other single asset in this README for criterion #5. -->
 
 ## Tech Stack
@@ -402,8 +400,7 @@ npm run dev
 | 3 | `03-brightdata-dashboard.png` | Bright Data dashboard / dataset / collection run | "Bright Data Integration" |
 | 4 | `04-self-healing-diagram.png` | Pipeline/architecture diagram (optional but recommended) | "Self-Healing Scraper Pipeline" |
 | 5 | `05-scraper-health.png` | `/api/scraper-health` response or dashboard | "Scraper Health Monitor" |
-| 6 | `06-scraper-studio.png` | Scraper Studio collector config / field mapping / run history | "Use of Bright Data Scraper Studio" |
-| 7 | `07-self-healing-demo.png` (or `.gif`) | Before/during/after: normal search → simulated failure → healing → recovery | "See Self-Healing in Action" |
+| 6 | `06-self-healing-demo.png` (or `.gif`) | Before/during/after: normal search → simulated failure → healing → recovery | "See Self-Healing in Action" |
 
 **Priority order if you're short on time:** #6 (Scraper Studio) and #7 (self-healing demo, ideally a GIF) matter most — they directly prove judging criteria #4 and #5, which are otherwise the easiest to lose points on since they require *evidence*, not just a description.
 
